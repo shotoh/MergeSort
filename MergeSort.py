@@ -1,8 +1,13 @@
-def merge_sort(arr):
-    if len(arr) <= 1: return arr
-    mid = len(arr) // 2
-    left = arr[:mid]
-    right = arr[mid:]
+def merge_sort(array):
+    # base case for recursion
+    if len(array) <= 1:
+        return array
+
+    mid = len(array) // 2
+    left = array[:mid]
+    right = array[mid:]
+
+    # use recursion
     merge_sort(left)
     merge_sort(right)
 
@@ -10,33 +15,34 @@ def merge_sort(arr):
     curr = 0
     while i < len(left) and j < len(right):
         if left[i] < right[j]:
-            arr[curr] = left[i]
+            array[curr] = left[i]
             i += 1
         else:
-            arr[curr] = right[j]
+            array[curr] = right[j]
             j += 1
         curr += 1
 
+    # when one tail is empty, append the other tail
     while i < len(left):
-        arr[curr] = left[i]
+        array[curr] = left[i]
         i += 1
         curr += 1
 
     while j < len(right):
-        arr[curr] = right[j]
+        array[curr] = right[j]
         j += 1
         curr += 1
 
-    return arr
+    return array
 
 
-def print_arr(arr):
-    for i in range(len(arr)):
-        print(arr[i])
+def print_array(array):
+    for x in array:
+        print(x)
 
 
 if __name__ == '__main__':
-    arr = [4, 13, 9, 55, 27, 5, 3, 19, 7, 34]
-    merge_sort(arr)
+    array_to_sort = [4, 13, 9, 55, 27, 5, 3, 19, 7, 34]
+    merge_sort(array_to_sort)
     print("Printing sorted array:")
-    print_arr(arr)
+    print_array(array_to_sort)

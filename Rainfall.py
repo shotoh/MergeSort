@@ -1,49 +1,53 @@
 def highest(dictionary):
-    result = 0
-    dict_max = 0
-    for x, y in dictionary.items():
-        if y > dict_max:
-            result = x
-            dict_max = y
+    if len(dictionary) == 0:
+        return None
+    result = list(dictionary.keys())[0]
+    dictionary_max = dictionary.get(result)
+    for key, value in dictionary.items():
+        if value > dictionary_max:
+            result = key
+            dictionary_max = value
     return result
 
 
 def lowest(dictionary):
-    result = 0
-    dict_min = 1000 # todo replace w/ max
-    for x, y in dictionary.items():
-        if y < dict_min:
-            result = x
-            dict_min = y
+    if len(dictionary) == 0:
+        return None
+    result = list(dictionary.keys())[0]
+    dictionary_min = dictionary.get(result)
+    for key, value in dictionary.items():
+        if value < dictionary_min:
+            result = key
+            dictionary_min = value
     return result
 
 
 def mean(dictionary):
-    dict_sum = 0
-    for y in dictionary.values():
-        dict_sum += y
-    return dict_sum / len(dictionary)
+    dictionary_sum = 0
+    for value in dictionary.values():
+        dictionary_sum += value
+    return dictionary_sum / len(dictionary)
 
 
 def greater_than_mean(dictionary):
-    dict_mean = mean(dictionary)
-    dict_num = 0
-    for y in dictionary.values():
-        if y > dict_mean:
-            dict_num += 1
-    return dict_num
+    result = 0
+    dictionary_mean = mean(dictionary)
+    for value in dictionary.values():
+        if value > dictionary_mean:
+            result += 1
+    return result
 
 
 def bubble_sort(dictionary):
     length = len(dictionary)
-    arr = [*dictionary.values()]
+    result = [*dictionary.values()]
     for i in range(length):
         for j in range(0, length - i - 1):
-            if arr[j] < arr[j + 1]:
-                temp = arr[j + 1]
-                arr[j + 1] = arr[j]
-                arr[j] = temp
-    return arr
+            if result[j] < result[j + 1]:
+                temp = result[j + 1]
+                result[j + 1] = result[j]
+                result[j] = temp
+    return result
 
 
 def convert_to_centimeter(inches):
@@ -69,4 +73,4 @@ if __name__ == '__main__':
     print(f"Month with lowest rainfall is {lowest(rainfall)}")
     print(f"The mean value of rainfall is {convert_to_centimeter(mean(rainfall))} cm")
     print(f"The number of months with rainfall greater than mean is {greater_than_mean(rainfall)}")
-    print(f"Bubble sorted values is {bubble_sort(rainfall)}")
+    print(f"Bubble sorted values is {list(map(convert_to_centimeter, bubble_sort(rainfall)))}")
