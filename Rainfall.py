@@ -1,7 +1,9 @@
 def highest(dictionary):
+    # if empty return None
     if len(dictionary) == 0:
         return None
-    result = list(dictionary.keys())[0]  # first element
+    # acknowledges the first element
+    result = list(dictionary.keys())[0]
     dictionary_max = dictionary.get(result)
     for key, value in dictionary.items():
         if value > dictionary_max:
@@ -11,9 +13,11 @@ def highest(dictionary):
 
 
 def lowest(dictionary):
+    # if empty return None
     if len(dictionary) == 0:
         return None
-    result = list(dictionary.keys())[0]  # first element
+    # acknowledges the first element
+    result = list(dictionary.keys())[0]
     dictionary_min = dictionary.get(result)
     for key, value in dictionary.items():
         if value < dictionary_min:
@@ -31,7 +35,8 @@ def mean(dictionary):
 
 def greater_than_mean(dictionary):
     result = 0
-    dictionary_mean = mean(dictionary)  # using above method
+    # uses the mean method above
+    dictionary_mean = mean(dictionary)
     for value in dictionary.values():
         if value > dictionary_mean:
             result += 1
@@ -40,7 +45,8 @@ def greater_than_mean(dictionary):
 
 def bubble_sort(dictionary):
     length = len(dictionary)
-    result = [*dictionary.values()]  # unpack the values of dict to turn to array
+    # unpacks the values of the dictionary to turn into an array
+    result = [*dictionary.values()]
     for i in range(length):
         for j in range(length - i - 1):
             if result[j] < result[j + 1]:
@@ -73,5 +79,5 @@ if __name__ == '__main__':
     print(f"Month with lowest rainfall is {lowest(rainfall)}")
     print(f"The mean value of rainfall is {convert_to_centimeter(mean(rainfall))} cm")
     print(f"The number of months with rainfall greater than mean is {greater_than_mean(rainfall)}")
-    # map all values in array to cm
+    # map all of the values in the array to centimeters, then returns as a list
     print(f"Bubble sorted values is {list(map(convert_to_centimeter, bubble_sort(rainfall)))}")
