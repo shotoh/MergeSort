@@ -79,5 +79,5 @@ if __name__ == '__main__':
     print(f"Month with lowest rainfall is {lowest(rainfall)}")
     print(f"The mean value of rainfall is {convert_to_centimeter(mean(rainfall))} cm")
     print(f"The number of months with rainfall greater than mean is {greater_than_mean(rainfall)}")
-    # map all of the values in the array to centimeters, then returns as a list
+    # maps all the values in the array to centimeters, then returns as a list
     print(f"Bubble sorted values is {list(map(convert_to_centimeter, bubble_sort(rainfall)))}")
