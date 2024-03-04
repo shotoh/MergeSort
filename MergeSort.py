@@ -1,3 +1,6 @@
+import random
+
+
 def merge_sort(array):
     # base case for recursion
     if len(array) <= 1:
@@ -42,7 +45,11 @@ def print_array(array):
 
 
 if __name__ == '__main__':
-    array_to_sort = [4, 13, 9, 55, 27, 5, 3, 19, 7, 34]
+    array_to_sort = []
+    for _ in range(10):
+        array_to_sort.append(random.randint(0, 100))
+    print("Unsorted array:")
+    print_array(array_to_sort)
     merge_sort(array_to_sort)
-    print("Printing sorted array:")
+    print("Sorted array:")
     print_array(array_to_sort)
